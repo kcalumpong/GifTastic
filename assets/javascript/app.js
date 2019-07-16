@@ -16,12 +16,14 @@ $(document).ready(function () {
 
         }
     }
+    //call the function 
     renderButtons();
 
 
     //adds a button for mood entered
     $("#add-mood").on("click", function (event) {
         event.preventDefault();
+
         var mood = $("#moods-input").val().trim();
         moods.push(mood);
         renderButtons();
@@ -30,12 +32,15 @@ $(document).ready(function () {
 
     // alert( $(this).attr('data-name'));
 
+    //where do i put this?
+    $(document).on("click", ".mood", displayMoods);
+
     function displayMoods() {
 
         moods = $(this).attr("data-name");
 
-        var jQueryURL = "http://api.giphy.com/v1/gifs/search?q=" +
-            moods + "&api_key=EmDjuvzgigoYD91Dc7RT9AxOWcYNZroh&limit=10";
+        var jQueryURL = ("http://api.giphy.com/v1/gifs/search&q=" +
+            moods + "&api_key=EmDjuvzgigoYD91Dc7RT9AxOWcYNZroh&limit=10");
 
         $.ajax({
             url: jQueryURL,
@@ -44,13 +49,14 @@ $(document).ready(function () {
             $("#giphy-view").text(JSON.stringify(response));
         })
 
+       
+
+
+
     }
 
     displayMoods();
 
-
-    //where do i put this?
-    $(document).on("click", ".mood", displayMoods);
 
 
 })
