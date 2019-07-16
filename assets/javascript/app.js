@@ -30,6 +30,7 @@ $(document).ready(function () {
         return;
     });
 
+
     // alert( $(this).attr('data-name'));
 
     //where do i put this?
@@ -37,10 +38,10 @@ $(document).ready(function () {
 
     function displayMoods() {
 
-        moods = $(this).attr("data-name");
+        var thisMood = $(this).attr("#moods-input").val;
 
         var jQueryURL = ("http://api.giphy.com/v1/gifs/search&q=" +
-            moods + "&api_key=EmDjuvzgigoYD91Dc7RT9AxOWcYNZroh&limit=10");
+            thisMood + "&api_key=EmDjuvzgigoYD91Dc7RT9AxOWcYNZroh&limit=10");
 
         $.ajax({
             url: jQueryURL,
@@ -48,6 +49,8 @@ $(document).ready(function () {
         }).then(function (response) {
             $("#giphy-view").text(JSON.stringify(response));
         })
+
+  
 
        
 
