@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>GifTastic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+</head>
+
+<body background="https://www.fg-a.com/wallpapers/white-marble-4-2018.jpg">
+
+    <div class="container">
+        <h1>All the Moods!</h1>
+
+        <!--Where the buttons will go-->
+        <div id="buttons-view"></div>
+
+        <!-- Where user inputs their mood -->
+        <form id="moods-form">
+            <label for="moods-input">What's Your Mood Today?</label>
+            <input type="text" id="moods-input">
+
+            <!-- Button to trigger new moods -->
+            <input id="add-mood" type="submit" value="Add a Mood!">
+        </form>
+
+        <!-- where the gifs will live -->
+        <div id="giphy-view"></div>
+
+    </div>
+
+    <script type="text/javascript" src="./assets/javascript/app.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+button {
+    margin: 15px 5px;
+    padding: 10px;
+    background-color: pink;
+    
+}
+
+#moods-input {
+    margin-bottom: 20px;
+}
