@@ -23,6 +23,8 @@ $(document).ready(function () {
     //adds a button for mood entered
     $("#add-mood").on("click", function (event) {
         event.preventDefault();
+        $("#buttons-view").empty();
+
 
         var mood = $("#moods-input").val().trim();
         moods.push(mood);
@@ -46,30 +48,38 @@ $(document).ready(function () {
 
             var results = response.data;
             for (var i = 0; i < results.length; i++) {
-                var gifDiv = $("<div>");
 
+                
+                var gifDiv = $("<div>");
+                
                 var moodImage = $("<img>");
-               
+                
                 moodImage.attr('src', results[i].images.original_still.url);
                 moodImage.attr('data-still', results[i].images.original_still.url);
                 moodImage.attr('data-state', 'still');
+                
                 moodImage.addClass('gif');
                 moodImage.attr('data-animate', results[i].images.original.url);
-         
-            gifDiv.append(moodImage)
-    
+                
+                gifDiv.append(moodImage)
+                
+                $("#giphy-view").prepend(gifDiv);
+                
+                // var still = results[i].images.original_still.url;
+                // var animated = results[i].images.original_still.url;
+                // var src = results[i].images.original_still.url;
 
-            $("#giphy-view").prepend(gifDiv);
-                  
+                
             }
-           
+
+
         })
 
     }
 
-    
 
-       
+
+
 
 })
 
