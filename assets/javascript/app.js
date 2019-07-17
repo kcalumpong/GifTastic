@@ -43,25 +43,33 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
             console.log(response);
-            $("#giphy-view").text(JSON.stringify(response));
 
-            var results = response;
+            var results = response.data;
             for (var i = 0; i < results.length; i++) {
                 var gifDiv = $("<div>");
 
                 var moodImage = $("<img>");
-                moodImage.attr("src, results[i]");
-                gifDiv.prepend(moodImage);
-                $("#giphy-view").prepend(gifDiv);
-                
+               
+                moodImage.attr('src', results[i].images.original_still.url);
+                moodImage.attr('data-still', results[i].images.original_still.url);
+                moodImage.attr('data-state', 'still');
+                moodImage.addClass('gif');
+                moodImage.attr('data-animate', results[i].images.original.url);
+         
+            gifDiv.append(moodImage)
+    
+
+            $("#giphy-view").prepend(gifDiv);
+                  
             }
            
         })
 
     }
 
-  
+    
 
+       
 
 })
 
