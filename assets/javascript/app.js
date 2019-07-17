@@ -29,31 +29,38 @@ $(document).ready(function () {
         renderButtons();
     });
 
+    $(document).on("click", ".moodClass", displayMoods);
 
-    // alert( $(this).attr('data-name'));
+    function displayMoods(e) {
+        console.log('mood clicked', this, $(this))
+        var thisMood = $(this).attr("data-name");
 
-    //where do i put this?
-    $(document).on("click", ".mood", displayMoods);
-
-    function displayMoods() {
-
-        var thisMood = $(this).attr("data-name").val();
-
-        var jQueryURL = ("https://api.giphy.com/v1/gifs/search&q=" +
+        var jQueryURL = ("http://api.giphy.com/v1/gifs/search?q=" +
             thisMood + "&api_key=EmDjuvzgigoYD91Dc7RT9AxOWcYNZroh&limit=10");
 
         $.ajax({
             url: jQueryURL,
             method: "GET"
         }).then(function (response) {
-            $("#giphy-view").text(JSON.stringify(response.data));
             console.log(response);
+            $("#giphy-view").text(JSON.stringify(response));
+
+            var results = response;
+            for (var i = 0; i < results.length; i++) {
+                var gifDiv = $("<div>");
+
+                var moodImage = $("<img>");
+                moodImage.attr("src, results[i]");
+                gifDiv.prepend(moodImage);
+                $("#giphy-view").prepend(gifDiv);
+                
+            }
+           
         })
 
     }
 
-    displayMoods();
-
+  
 
 
 })
