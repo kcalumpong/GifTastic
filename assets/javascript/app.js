@@ -35,7 +35,7 @@ $(document).ready(function () {
         console.log('mood clicked', this, $(this))
         var thisMood = $(this).attr("data-name");
 
-        var jQueryURL = ("http://api.giphy.com/v1/gifs/search?q=" +
+        var jQueryURL = ("https://api.giphy.com/v1/gifs/search?q=" +
             thisMood + "&api_key=EmDjuvzgigoYD91Dc7RT9AxOWcYNZroh&limit=10");
 
         $.ajax({
