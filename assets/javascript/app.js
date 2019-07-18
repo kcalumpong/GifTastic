@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var moods = ["Happy", "Sad", "Cheerful", "Angry", "Funny", "Romantic", "Mysterious", "Tired", "Cranky", "Flirty", "Amused", "Goofy", "Peaceful", "Optimistic"];
+    var moods = ["Paranoid", "Exhausted", "Hiding", "Drenched", "Starving", "Romantic", "Mysterious", "Tired", "Cranky", "Flirty", "Amused", "Goofy", "Peaceful", "Rihanna"];
 
     //buttons for original array
     function renderButtons() {
@@ -23,7 +23,7 @@ $(document).ready(function () {
     //adds a button for mood entered
     $("#add-mood").on("click", function (event) {
         event.preventDefault();
-        $("#buttons-view").empty();
+
 
 
         var mood = $("#moods-input").val().trim();
@@ -34,6 +34,7 @@ $(document).ready(function () {
     $(document).on("click", ".moodClass", displayMoods);
 
     function displayMoods(e) {
+        $("#giphy-view").empty();
         console.log('mood clicked', this, $(this))
         var thisMood = $(this).attr("data-name");
 
@@ -49,31 +50,47 @@ $(document).ready(function () {
             var results = response.data;
             for (var i = 0; i < results.length; i++) {
 
-                
+
                 var gifDiv = $("<div>");
-                
+
                 var moodImage = $("<img>");
-                
-                moodImage.attr('src', results[i].images.original_still.url);
+
+                moodImage.attr('src', results[i].images.fixed_height.url);
                 moodImage.attr('data-still', results[i].images.original_still.url);
-                moodImage.attr('data-state', 'still');
-                
+                moodImage.attr('data-state', 'animated');
+
                 moodImage.addClass('gif');
                 moodImage.attr('data-animate', results[i].images.original.url);
-                
-                gifDiv.append(moodImage)
-                
-                $("#giphy-view").prepend(gifDiv);
-                
-                // var still = results[i].images.original_still.url;
-                // var animated = results[i].images.original_still.url;
-                // var src = results[i].images.original_still.url;
 
-                
+                gifDiv.append(moodImage)
+
+
+                $("#giphy-view").prepend(gifDiv);
+
+
             }
 
+            $(document).on("click", ".gif", function() { 
 
+            var state = $(this).attr("data-state"); 
+
+                if (state === "animated") {
+                    $(this).attr("src", $(this).attr("data-still"))
+                    $(this).attr("data-state", "still")
+
+                } else { 
+                    $(this).attr("src", $(this).attr("data-animate"))
+                    $(this).attr("data-state", "animated")
+
+                }
+
+
+            })
         })
+
+
+
+        
 
     }
 
