@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var moods = ["Paranoid", "Exhausted", "Hiding", "Drenched", "Starving", "Romantic", "Mysterious", "Tired", "Cranky", "Flirty", "Amused", "Goofy", "Peaceful", "Rihanna"];
+    var moods = ["Paranoid", "Exhausted", "Starving", "Romantic", "Alexis Rose", "Mysterious", "Tired", "Cranky", "Lady Gaga", "Flirty", "Amused", "Stoned", "Peaceful", "Rihanna"];
 
     //buttons for original array
     function renderButtons() {
@@ -13,18 +13,14 @@ $(document).ready(function () {
             m.attr("data-name", moods[i]);
             m.text(moods[i]);
             $("#buttons-view").append(m);
-
         }
     }
     //call the function 
     renderButtons();
 
-
     //adds a button for mood entered
     $("#add-mood").on("click", function (event) {
         event.preventDefault();
-
-
 
         var mood = $("#moods-input").val().trim();
         moods.push(mood);
@@ -51,15 +47,15 @@ $(document).ready(function () {
             for (var i = 0; i < results.length; i++) {
 
 
-                var gifDiv = $("<div>");
+                var gifDiv = $("<span>");
 
                 var moodImage = $("<img>");
+                moodImage.addClass('gif');
 
                 moodImage.attr('src', results[i].images.fixed_height.url);
+
                 moodImage.attr('data-still', results[i].images.original_still.url);
                 moodImage.attr('data-state', 'animated');
-
-                moodImage.addClass('gif');
                 moodImage.attr('data-animate', results[i].images.original.url);
 
                 gifDiv.append(moodImage)
@@ -67,36 +63,23 @@ $(document).ready(function () {
 
                 $("#giphy-view").prepend(gifDiv);
 
-
             }
 
-            $(document).on("click", ".gif", function() { 
+            $(document).on("click", ".gif", function () {
 
-            var state = $(this).attr("data-state"); 
+                var state = $(this).attr("data-state");
 
                 if (state === "animated") {
                     $(this).attr("src", $(this).attr("data-still"))
                     $(this).attr("data-state", "still")
 
-                } else { 
+                } else {
                     $(this).attr("src", $(this).attr("data-animate"))
                     $(this).attr("data-state", "animated")
 
                 }
-
-
             })
         })
-
-
-
-        
-
     }
-
-
-
-
-
 })
 
