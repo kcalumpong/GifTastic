@@ -19,25 +19,11 @@ h1 {
     font-size: 38px;
     font-family: 'Open Sans Condensed', sans-serif;
     margin-left: 20px;
-  
- 
 }
 .moodClass, label {
     font-family: 'Open Sans Condensed', sans-serif;
-
 }
 
 #add-mood{
     font-family: 'Open Sans Condensed', sans-serif;
-}
-
-.whatever {
-    background-color: red;
-    border-radius: 15px;
-    text-decoration: none;
-    
-}
-
-.whatever:active {
-    background-color: blue;
 }
